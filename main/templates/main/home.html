@@ -1,0 +1,98 @@
+{% load static %}
+!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главное приложение</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #1D1D1D;
+        }
+        #image-container {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("{% static 'main/картинка.jpg' %}");
+            background-size: cover;
+            transition: transform 1s ease;
+            border-bottom: 5px solid #5D5D5D;
+        }
+        #button-container {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            text-align: center;
+            transition: top 1s ease, transform 1s ease;
+            transform: translateY(0);
+            transition-delay: 1s;
+            background-color: #1D1D1D;
+            color: #1D1D1D;
+        }
+        #button-container.show {
+            top: 95%;
+            transform: translateY(-10%);
+        }
+        button {
+            width: 200px;
+            height: 50px;
+            background-color: #5A5A5A;
+            cursor: pointer;
+        }
+        .st {
+            background-color: #1A1A1A;
+        }
+
+        button:nth-child(2) {
+            background-color: transparent;
+            border: none;
+            color: transparent;
+            cursor: default;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        button:nth-child(2) {
+            background-color: #1D1D1D;
+            border: none;
+            color: transparent;
+            cursor: default;
+        }
+
+        button:nth-child(2):hover {
+            background-color: #5A5A5A;
+            color: #1D1D1D;
+        }
+
+        button:nth-child(2):active {
+            background-color: #5A5A5A;
+            color: #1D1D1D;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container"></div>
+    <div id="button-container">
+        <div class="st">
+            <a href="app2/"><button>Главсайт ЦПЗ</button></a>
+        </div>
+        <div class="sd">
+            <a href="app1/"><button></button></a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const imageContainer = document.getElementById('image-container');
+            const buttonContainer = document.getElementById('button-container');
+            imageContainer.style.transform = 'translateY(-10%)';
+            buttonContainer.classList.add('show');
+        }
+    </script>
+</body>
+</html>

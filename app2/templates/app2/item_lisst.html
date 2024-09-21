@@ -1,0 +1,29 @@
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page2</title>
+    <link rel="stylesheet" href="{% static 'app2/det4.css' %}">
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <h1>Сотрудничество</h1>
+            <div class="links">
+                <li><a href="{% url 'page1' %}">О нас</a></li>
+                <li><a href="{% url 'page2' %}">Новости</a></li>
+                <li><a href="{% url 'page3' %}">Банк</a></li>
+                <li><a href="{% url 'item_lisst' %}">Сотрудничество</a></li>
+            </div>
+        </aside>
+        <div class="containerr">
+
+        <div>
+    </div>
+</body>
+</html>

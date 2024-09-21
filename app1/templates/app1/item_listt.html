@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>База данных вопросов</title>
+    <link rel="stylesheet" href="{% static 'css/item_list.css' %}">
+</head>
+<body>
+<div class="container">
+    <div class="left-block">
+        <h1>База данных вопросов</h1>
+        <form method="get">
+            <input tupe="text" name="search" placeholder="Search..." value="{{  request.GET.search }}">
+            <button type="submit">Найти</button>
+        </form>
+        <ul>
+            {% for item in items %}
+                <li>{{  item.title }}: {{ item.text }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="right-block">
+        <h2>Добавить вопрос</h2>
+        <form method="post" action="" class="new-item-form">
+            {% csrf_token %}
+            <input type="text" name="title" placeholder="Тема вопроса" required>
+            <textarea name="text" placeholder="Текст" required></textarea>
+            <button type="submit">Добавить новый вопрос</button>
+        </form>
+    </div>
+</div>
+<a href="{%  url 'item_detail' %}" class="item-detail-link">Что это?</a>
+</body>
+</html>

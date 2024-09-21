@@ -1,0 +1,17 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Инструкция</title>
+    <link rel="stylesheet" href="{% static 'css/det.css' %}">
+</head>
+<body>
+    <h1>Инструкция</h1>
+    <p>Тише! Если вы нашли это место, то никому его не сообщайте! (Если скажете, то мы вас вычислим и запретим доступ.) В этом месте вы можете добавлять новые вопросы, читать старые, находить их. Из-за того, что лишь маленькую часть вопросов вы знаете, что использовались когда-либо, мы даже почти не запрещаем вам доступ к этому месту.</p>
+<a href="{% url 'item_listt' %}"class="item-listt-link">На основную страницу</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{%  load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Page1</title>
+    <link rel="stylesheet" href="{% static 'app2/det.css' %}">
+</head>
+<body>
+<aside>
+    <h1>Новости</h1>
+    <div class="links">
+        <li><a href="{% url 'page1' %}">О нас</a></li>
+        <li><a href="{% url 'page2' %}">Новости</a></li>
+        <li><a href="{% url 'page3' %}">Банк</a></li>
+        <li><a href="{% url 'item_lisst' %}">Сотрудничество</a></li>
+        <li><a href="{% url 'register' %}"class="d">Регистрация</a></li>
+    </div>
+</aside>
+<div class="containerr">
+    <img src="{% static 'app2/image.png' %}" alt="" class="background-image">
+    <div class="content">
+        <h2>Приветствуем, пользователи! Вы находитесь на нашем главном сайте! Здесь вы можете читать новости, смотреть свой рейтинг, ОЗ. Также здесь есть список наших ботов. (Именно в них вы сможете делать заказы.) Если вы ничего не знаете о нас:</h2>
+        <h3>Мы - отделение лицеской организации "Игротехники", которое помогает вам учиться. Вы можете делать у нас заказы на объяснение материала, у нас также есть заготовленные курсы, которые вы также можете скачать. За все эти вещи нужно платить нашей валютой - ОЗ. (Очками Знаний.) Их можно зарабатывать, выполняя задания, для этого нужно написать нашему главному инспектору: 89138395726. Также вы можете заполнить анкету со школьным мероприятием, на котором вы были, они проверяются, если всё верно, то вам добавляется ОЗ. Счетчик ОЗ изменяется каждую неделю.</h3>
+        <h4>Главная наша особенность - наши курсы и заказы делают сами ученики, за это они получают ОЗ, оценки и многое другое. Если вы хотите стать одним(ой) из них, то пишите главному инспектору.</h4>
+        <button id="more-button">Подробнее</button>
+        <div class="popup" id="popup">
+            <p>Устройство нашей организации: Клиент заходит в CRK бота, покупает курс или же делает заказ. Во втором случае заказ приходит к одному из наших операторов, они отправляют его к самим репетиторам. Инспектора в свою очередь следят за этим всем, отправляют комнады. Стать инспектором можно только через огромное количество, качество и время работы.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const moreButton = document.getElementById('more-button');
+    const popup = document.getElementById('popup');
+
+    // Плавное появление и исчезание popup
+    moreButton.addEventListener('click', function() {
+        if (popup.style.display === 'none' || popup.style.display === '') {
+            popup.style.display = 'block';
+        } else {
+            popup.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

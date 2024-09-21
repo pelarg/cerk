@@ -1,0 +1,15 @@
+.admin-panel button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-panel button.done {
+  background-color: darkorange;
+}
