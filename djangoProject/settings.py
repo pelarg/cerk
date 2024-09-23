@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-btzd4y#lk*#9l$986a*ok#)x34-zpfd-l&%vrta_&y^us00i=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://github.com/pelarg/cerk.git']
+ALLOWED_HOSTS = ['https://pelarg.github.io/cerk/']
 
 
 # Application definition
