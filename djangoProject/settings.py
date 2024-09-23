@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-btzd4y#lk*#9l$986a*ok#)x34-zpfd-l&%vrta_&y^us00i=q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://github.com/pelarg/cerk.git']
 
 
 # Application definition
