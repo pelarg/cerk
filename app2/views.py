@@ -20,7 +20,17 @@ def page2(request):
 
 def page3(request):
     top_users = CustomUser.objects.annotate(oz_rank=F('oz')).order_by('-oz_rank')[:20]
-    current_user = request.user
+
+    # Проверка авторизации
+    if request.user.is_authenticated:
+        current_user = request.user
+        if current_user.id not in [user.id for user in top_users]:
+            top_users = list(top_users)
+            top_users.append(current_user.customuser)
+            top_users.sort(key=lambda x: x.oz, reverse=True)
+    else:
+        # Обработка неавторизованных пользователей (например, отображение сообщения)
+        return render(request, 'app2/page3.html', {'top_users': top_users, 'message': 'Пожалуйста, войдите в систему.'})
 
     if current_user.id not in [user.id for user in top_users]:
         top_users = list(top_users)
