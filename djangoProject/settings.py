@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-btzd4y#lk*#9l$986a*ok#)x34-zpfd-l&%vrta_&y^us00i=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://pelarg.github.io/cerk/']
-
+ALLOWED_HOSTS = ["MainApp.onrender.com"]
 
 # Application definition
 
@@ -126,7 +125,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
 if not DEBUG:
-    STATIC_ROOT = ''
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

@@ -1,0 +1,109 @@
+/* Общий стиль контейнера для всех блоков */
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Левый блок: поиск и список элементов */
+.left-block {
+  background-color: #FFBB00;
+  width: 50%;
+}
+
+/* Правый блок: добавление нового элемента */
+.right-block {
+  background-color: #ED8C40;
+  width: 50%;
+}
+
+/* Заголовок страницы */
+h1 {
+  font-size: 3rem;
+  margin-top: 0;
+  padding: 1rem;
+  background-color: #C92FBF;
+  color: #7E00B0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Форма поиска */
+form {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+form input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+form button {
+  padding: 0.5rem 1rem;
+  background-color: #DB5E80;
+  color: #7E00B0;
+  border: none;
+  cursor: pointer;
+}
+
+/* Список элементов */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #ED8C40;
+}
+
+/* Форма добавления нового элемента */
+form.new-item-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+form.new-item-form input[type="text"] {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  transform: translate(10px);
+}
+
+form.new-item-form textarea {
+  width: 100%;
+  height: 10rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+form.new-item-form . button-container {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+form.new-item-form button {
+  padding: 0.5rem 1rem;
+  background-color: #DB5E80;
+  color: #7E00B0;
+  border: none;
+  cursor: pointer;
+}
+
+/* Кнопка перехода на страницу детального просмотра */
+a.item-detail-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  background-color: #DB5E80;
+  color: #7E00B0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h2 {
+  transform: translate(370px);
+}
