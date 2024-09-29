@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-btzd4y#lk*#9l$986a*ok#)x34-zpfd-l&%vrta_&y^us00i=q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["MainApp.onrender.com"]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -132,3 +132,5 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 """AUTH_USER_MODEL = 'app2.user'"""
+
+PORT=8000
