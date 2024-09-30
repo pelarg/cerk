@@ -8,6 +8,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Инструкция</title>
     <link rel="stylesheet" href="{% static 'css/det.css' %}">
+    <style>
+        @media only screen and (max-width: 480px) {
+            body {
+                transform: rotate(90deg);
+                transform-origin: left top;
+                overflow-x: hidden;
+                overflow-y: scroll;
+                height: 100vh;
+                width: 100vh;
+                position: absolute;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+            }  
+        }
+    </style>
 </head>
 <body>
     <h1>Инструкция</h1>

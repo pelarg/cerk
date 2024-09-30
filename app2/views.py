@@ -18,6 +18,7 @@ def page2(request):
     elem=Element.objects.all().order_by('data')[:10]
     return render(request, 'app2/page2.html', {'elem': elem})
 
+
 def page3(request):
     top_users = CustomUser.objects.annotate(oz_rank=F('oz')).order_by('-oz_rank')[:20]
 
@@ -38,29 +39,28 @@ def page3(request):
         top_users.sort(key=lambda x: x.oz, reverse=True)
 
     # Создание диаграммы с помощью matplotlib
-    fig, ax = plt.subplots(figsize=(4,2))
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots() # Удалили лишнюю строку создания fig и ax
     # Цвета из CSS
     coral_color = '#FF7F50'
     blue_color = '#000080'
 
     # Создание эффекта градиента
     for i, user in enumerate(top_users):
-        if i % 2 == 0:  # Четные столбцы - darkorange
+        if i % 2 == 0: # Четные столбцы - darkorange
             ax.bar(user.username, user.oz, color='darkorange', edgecolor='orangered', linewidth=1)
-        else:  # Нечетные столбцы - orange
+        else: # Нечетные столбцы - orange
             ax.bar(user.username, user.oz, color='orange', edgecolor='orangered', linewidth=1)
 
     # Дополнительные настройки
     ax.set_xlabel("ОЗ")
 
-    ax.set_facecolor('lightblue')  # Синий фон диаграммы
+    ax.set_facecolor('lightblue') # Синий фон диаграммы
 
     # Добавление окантовки "outset"
     for spine in ['top', 'bottom', 'left', 'right']:
         ax.spines[spine].set_edgecolor('darkblue')
         ax.spines[spine].set_linewidth(2)
-        ax.spines[spine].set_linestyle('-')  # Сплошная линия
+        ax.spines[spine].set_linestyle('-') # Сплошная линия
 
     # Убираем пробелы между столбцами
     ax.set_xticks(np.arange(len(top_users)))
@@ -69,8 +69,8 @@ def page3(request):
     plt.title("ОЗ пользователей")
 
     # Изменяем фон изображения
-    fig.patch.set_facecolor('lightblue')  # Синий фон всего изображения
-    fig.patch.set_edgecolor('blue')  # Фиолетовая окантовка
+    fig.patch.set_facecolor('lightblue') # Синий фон всего изображения
+    fig.patch.set_edgecolor('blue') # Фиолетовая окантовка
     fig.patch.set_linewidth(1)
 
     # Сохранение диаграммы в объект io.BytesIO
