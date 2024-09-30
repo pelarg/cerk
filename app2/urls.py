@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', views.page1, name='page1'),
@@ -9,3 +10,4 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('anketa/', views.anketa, name='anketa'),
 ]
+urlpatterns += staticfiles_urlpatterns()
