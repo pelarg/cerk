@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>База данных вопросов</title>
-    <link rel="stylesheet" href="{% static 'css/item_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iiem_list.css' %}">
     <style>
         @media only screen and (max-width: 480px) {
             body {
@@ -35,7 +35,10 @@
         </form>
         <ul>
             {% for item in items %}
-                <li>{{  item.title }}: {{ item.text }}</li>
+            <li class="item-container">
+                <div class="item-title">{{  item.title }}</div>
+                <div class="item-text">{{ item.text }}</div>
+            </li>    
             {% endfor %}
         </ul>
     </div>

@@ -1,14 +1,60 @@
 {% load static %}
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Инструкция</title>
-    <link rel="stylesheet" href="{% static 'css/det.css' %}">
     <style>
+        body {
+            background: linear-gradient(135deg, #dd5e89, #7431c1, #3a1c71);
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow: hidden;
+            margin: 0; /* Устранение отступов по умолчанию */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Заполнение высоты окна просмотра */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 800px; /* Максимальная ширина контейнера */
+            width: 100%;
+            text-align: center; /* Выравнивание текста по центру */
+        }
+
+        h1 {
+            color: purple; /* Цвет заголовка */
+            margin-bottom: 50px;
+        }
+
+        p {
+            margin-bottom: 20px; /* Дополнительное пространство под текстом */
+        }
+
+        .item-listt-link {
+            display: block;
+            background: rebeccapurple; /* Цвет ссылки */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .item-listt-link:hover {
+            background: purple; /* Цвет при наведении */
+            transform: scale(1.1);
+        }
+
         @media only screen and (max-width: 480px) {
             body {
                 transform: rotate(90deg);
@@ -21,13 +67,15 @@
                 top: 0;
                 left: 0;
                 overflow: hidden;
-            }  
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Инструкция</h1>
-    <p>Тише! Если вы нашли это место, то никому его не сообщайте! (Если скажете, то мы вас вычислим и запретим доступ.) В этом месте вы можете добавлять новые вопросы, читать старые, находить их. Из-за того, что лишь маленькую часть вопросов вы знаете, что использовались когда-либо, мы даже почти не запрещаем вам доступ к этому месту.</p>
-<a href="{% url 'item_listt' %}"class="item-listt-link">На основную страницу</a>
+    <div class="container">
+        <h1>Инструкция</h1>
+        <p>Тише! Если вы нашли это место, то никому его не сообщайте! (Если скажете, то мы вас вычислим и запретим доступ.) В этом месте вы можете добавлять новые вопросы, читать старые, находить их. Из-за того, что лишь маленькую часть вопросов вы знаете, что использовались когда-либо, мы даже почти не запрещаем вам доступ к этому месту.</p>
+        <a href="{% url 'item_listt' %}" class="item-listt-link">На основную страницу</a>
+    </div>
 </body>
 </html>

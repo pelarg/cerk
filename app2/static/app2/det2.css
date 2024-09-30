@@ -20,7 +20,7 @@ body {
 }
 
 .all {
-    width: 600px;
+    width: 6%;
     margin: 20px auto; /* Центрируем элемент */
     text-align: center;
     background: radial-gradient(orangered, darkorange);
