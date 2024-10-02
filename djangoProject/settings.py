@@ -136,4 +136,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 """AUTH_USER_MODEL = 'app2.user'"""
 
-PORT=10000
+PORT=8000
