@@ -70,20 +70,6 @@ button:hover {
     transform: scale(1.1);
 }
 
-@media only screen and (max-width: 480px) {
-    body {
-        transform: rotate(90deg);
-        transform-origin: left top;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        height: 100vh;
-        width: 100vh;
-        position: absolute;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-    }
-}
 .item-container {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -99,4 +85,16 @@ button:hover {
 
 .item-text {
     font-size: 16px;
+}
+
+/* Мобильная версия */
+@media only screen and (max-width: 480px) {
+    .container {
+        flex-direction: column; /* Изменяем направление на вертикальное */
+    }
+
+    .left-block,
+    .right-block {
+        width: 100%; /* Занимаем 100% ширины для мобильных */
+    }
 }

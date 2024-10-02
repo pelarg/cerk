@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Мобильная" страница</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #404040);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Скрываем полосу прокрутки */
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .button {
+            background-color: #111;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Включите Версию для ПК!</h1>
+        <p>Чтобы лучше пользоваться сайтом, пожалуйста, включите "Версию для ПК" на вашем устройстве.</p>
+        <img scr="{% static 'main/scr.jpg' %}" alt="Inst" class="background-image">
+        <a href="{% url 'home/' %}" class='button'>Вернуться на сайт</a>
+    </div>
+</body>
+</html>
