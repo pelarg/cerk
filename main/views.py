@@ -2,7 +2,7 @@ from django.shortcuts import render
 from user_agents import parse
 
 def home(request):
-    return render(request, 'main/home.html', {})
+    return render(request, 'main/home.html')
 
 def mobile_version(request):
     user_agent_string = request.META.get('HTTP_USER_AGENT', '')
