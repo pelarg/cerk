@@ -18,75 +18,58 @@ def page2(request):
     elem=Element.objects.all().order_by('data')[:10]
     return render(request, 'app2/page2.html', {'elem': elem})
 
-
 def page3(request):
+    # Получить 20 пользователей с максимальным значением oz
     top_users = CustomUser.objects.annotate(oz_rank=F('oz')).order_by('-oz_rank')[:20]
 
-    # Проверка авторизации
-    if request.user.is_authenticated:
-        current_user = request.user
-        if current_user.id not in [user.id for user in top_users]:
-            top_users = list(top_users)
-            top_users.append(current_user.customuser)
-            top_users.sort(key=lambda x: x.oz, reverse=True)
-    else:
-        # Обработка неавторизованных пользователей (например, отображение сообщения)
-        return render(request, 'app2/page3.html', {'top_users': top_users, 'message': 'Пожалуйста, войдите в систему.'})
+    # Проверка наличия пользователей
+    if not top_users:
+       print("Нет пользователей для отображения.")
+       return render(request, 'app2/page3.html', {'message': 'Нет пользователей для отображения.'})
 
-    if current_user.id not in [user.id for user in top_users]:
-        top_users = list(top_users)
-        top_users.append(current_user.customuser)
-        top_users.sort(key=lambda x: x.oz, reverse=True)
+    # Переписываем текущего пользователя.
+    try:
+        current_user = CustomUser.objects.get(username=request.user.username)  # Получаем объект CustomUser
+    except CustomUser.DoesNotExist:
+        return render(request, 'app2/page3.html', {'top_users': top_users, 'message': 'Текущий пользователь не найден.'})
 
-    # Создание диаграммы с помощью matplotlib
-    fig, ax = plt.subplots() # Удалили лишнюю строку создания fig и ax
-    # Цвета из CSS
-    coral_color = '#FF7F50'
-    blue_color = '#000080'
+    if current_user not in top_users:
+       top_users = list(top_users)  # Преобразуем QuerySet в список
+       top_users.append(current_user)  # Добавляем текущего пользователя
+       top_users = sorted(top_users, key=lambda x: x.oz, reverse=True)  # Сортировка по полю oz
 
-    # Создание эффекта градиента
+    # Создание диаграммы
+    fig, ax = plt.subplots()
+
     for i, user in enumerate(top_users):
-        if i % 2 == 0: # Четные столбцы - darkorange
-            ax.bar(user.username, user.oz, color='darkorange', edgecolor='orangered', linewidth=1)
-        else: # Нечетные столбцы - orange
-            ax.bar(user.username, user.oz, color='orange', edgecolor='orangered', linewidth=1)
+        color = 'darkorange' if i % 2 == 0 else 'orange'
+        ax.bar(user.username, user.oz, color=color, edgecolor='orangered', linewidth=1)
 
-    # Дополнительные настройки
-    ax.set_xlabel("ОЗ")
-
-    ax.set_facecolor('lightblue') # Синий фон диаграммы
-
-    # Добавление окантовки "outset"
-    for spine in ['top', 'bottom', 'left', 'right']:
-        ax.spines[spine].set_edgecolor('darkblue')
-        ax.spines[spine].set_linewidth(2)
-        ax.spines[spine].set_linestyle('-') # Сплошная линия
-
-    # Убираем пробелы между столбцами
-    ax.set_xticks(np.arange(len(top_users)))
-    ax.set_xticklabels([user.username for user in top_users], rotation=0, ha='right')
-
+    ax.set_xlabel("Пользователи")
+    ax.set_ylabel("ОЗ")
     plt.title("ОЗ пользователей")
+    ax.set_facecolor('lightblue')
 
-    # Изменяем фон изображения
-    fig.patch.set_facecolor('lightblue') # Синий фон всего изображения
-    fig.patch.set_edgecolor('blue') # Фиолетовая окантовка
-    fig.patch.set_linewidth(1)
+    ax.set_xticks(np.arange(len(top_users)))
+    ax.set_xticklabels([user.username for user in top_users], rotation=45, ha='right')
 
-    # Сохранение диаграммы в объект io.BytesIO
+    # Сохранение диаграммы
     buf = io.BytesIO()
-    plt.savefig(buf, format='png', transparent=False, dpi=300)
-    buf.seek(0)
+    plt.savefig(buf, format='png', bbox_inches='tight')
+    plt.close(fig)
 
-    # Преобразование изображения в строку base64
+    buf.seek(0)
     image_data = base64.b64encode(buf.read()).decode('utf-8')
 
-    # Передача данных в шаблон
+    if not image_data:
+       print("Не удалось закодировать изображение.")
+       return render(request, 'app2/page3.html', {'message': 'Не удалось сгенерировать диаграмму.'})
+
     context = {
-        "top_users": top_users,
-        "image_data": image_data,
-        "current_user": current_user,
-    }
+       "top_users": top_users,
+       "image_data": image_data,
+       "current_user": current_user,
+   }
     return render(request, 'app2/page3.html', context)
 
 def register(request):
