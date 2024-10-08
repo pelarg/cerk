@@ -1,3 +1,4 @@
+import matplotlib
 from django.shortcuts import render, redirect
 from .models import Element, CustomUser
 from .forms import RegistrationForm
@@ -11,6 +12,7 @@ import base64
 import numpy as np
 from matplotlib.colors import to_rgba
 from matplotlib.pyplot import figure
+matplotlib.use('Agg')
 
 def page1(request):
     return render(request, 'app2/page1.html')
