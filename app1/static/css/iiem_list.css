@@ -13,7 +13,7 @@ body {
 .left-block {
     width: 50%;
     padding: 20px;
-    overflow-y: auto;
+    overflow-x: auto;
 }
 
 h1 {
