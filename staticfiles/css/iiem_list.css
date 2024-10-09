@@ -2,13 +2,12 @@ body {
     background: linear-gradient(135deg, #dd5e89, #7431c1, #3a1c71);
     font-family: Arial, sans-serif;
     color: white;
-    overflow: hidden;
 }
 
 .container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 .left-block {

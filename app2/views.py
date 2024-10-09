@@ -41,7 +41,7 @@ def page3(request):
        top_users = sorted(top_users, key=lambda x: x.oz, reverse=True)  # Сортировка по полю oz
 
     # Создание диаграммы
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(12, 6)
 
     for i, user in enumerate(top_users):
         color = 'darkorange' if i % 2 == 0 else 'orange'
@@ -53,7 +53,7 @@ def page3(request):
     ax.set_facecolor('lightblue')
 
     ax.set_xticks(np.arange(len(top_users)))
-    ax.set_xticklabels([user.username for user in top_users], rotation=45, ha='right')
+    ax.set_xticklabels([user.username for user in top_users], rotation=0, ha='right')
 
     # Сохранение диаграммы
     buf = io.BytesIO()
@@ -72,6 +72,13 @@ def page3(request):
        "image_data": image_data,
        "current_user": current_user,
    }
+    return render(request, 'app2/page3.html', context)
+
+    context = {
+        "top_users": top_users,
+        "image_data": image_data,
+        "current_user": current_user,
+    }
     return render(request, 'app2/page3.html', context)
 
 def register(request):
