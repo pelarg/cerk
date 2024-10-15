@@ -1,0 +1,18 @@
+{% extends 'chats/base.html' %}
+
+{% block title %}Создание нового чата{% endblock %}
+
+{% block content %}
+<h2>Создание нового чата</h2>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">Название чата:</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="image">Изображение чата:</label>
+    <input type="file" id="image" name="image" required>
+
+    <button type="submit">Создать чат</button>
+</form>
+<a href="{% url 'chat_list' %}">Назад к списку чатов</a>
+{% endblock %}

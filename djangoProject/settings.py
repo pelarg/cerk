@@ -22,7 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-btzd4y#lk*#9l$986a*ok#)x34-zpfd-l&%vrta_&y^us00i=q'
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Русский'),
+]
 
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale'),]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -40,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app2',
+    'chats',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +121,12 @@ USE_I18N = True
 
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailgun.org'  # или используйте ваш SMTP-сервер
+EMAIL_HOST_USER = 'your-email@example.com'
+EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/

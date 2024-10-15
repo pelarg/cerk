@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #1D1D1D;
+}
+
+#image-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("{% static 'main/картинка.jpg' %}");
+    background-size: cover;
+    transition: transform 1s ease;
+    border-bottom: 5px solid #5D5D5D;
+}
+
+#button-container {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    text-align: center;
+    transition: transform 1s ease;
+    background-color: #1D1D1D;
+}
+
+.st {
+    display: inline-block; /* Установка в горизонтальный ряд */
+    margin: 0 10px; /* Промежуток между кнопками */
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    background-color: #5A5A5A;
+    cursor: pointer;
+    border-radius: 5px; /* Добавлено для округления углов */
+    color: white; /* Цвет текста */
+    font-size: 16px; /* Размер шрифта */
+}
+
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Окно модалки фиксированное */
+    z-index: 1; /* Сверху остальных элементов */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Скроллинг если нужно */
+    background-color: rgba(0, 0, 0, 0.7); /* Прозрачный черный фон */
+}
+
+.modal-content {
+    background-color: #1D1D1D;
+    margin: 15% auto; /* Центрирование по вертикали и горизонтали */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; /* Ширина модалки */
+    text-align: center; /* Центрирование текста */
+}
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+
+    color: red; /* Цвет при наведении на кнопку закрытия */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}

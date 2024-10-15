@@ -1,0 +1,25 @@
+{% extends 'chats/base.html' %}
+
+{% block title %}Чат: {{ chat.title }}{% endblock %}
+
+{% block content %}
+<h2>Чат: {{ chat.title }}</h2>
+
+<div class="messages">
+    {% for message in messages %}
+        <p><strong>{{ message.user.username }}:</strong> {{ message.content }} <em>{{ message.timestamp }}</em></p>
+    {% endfor %}
+</div>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="POST" novalidate>
+    {% csrf_token %}
+    <textarea name="content" rows="3" placeholder="Введите ваше сообщение..."></textarea>
+    <button type="submit">Отправить</button>
+</form>
+
+<a href="{% url 'chat_list' %}">Вернуться к списку чатов</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'chats/base.html' %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block content %}
+<h2>Профиль пользователя: {{ profile.nickname }}</h2>
+<p><strong>Имя:</strong> {{ profile.nickname }} {{ profile.user.last_name }}</p>
+<p><strong>Класс:</strong> {{ profile.grade }}</p>
+<p><strong>Телефон:</strong> {{ profile.phone }}</p>
+<p><strong>Роль:</strong>
+    {% if profile.role == 1 %}
+        Обычный пользователь
+    {% elif profile.role == 2 %}
+        Модератор
+    {% else %}
+        Администратор
+    {% endif %}
+</p>
+<a href="{% url 'chat_list' %}">Вернуться к списку чатов</a>
+{% endblock %}

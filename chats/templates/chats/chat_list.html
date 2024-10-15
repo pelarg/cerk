@@ -1,0 +1,25 @@
+{% extends 'chats/base.html' %}
+
+{% block title %}Список Чатов{% endblock %}
+
+{% block content %}
+<h2>Список Чатов</h2>
+{% if chats %}
+    <ul>
+    {% for chat in chats %}
+        <li>
+            <a href="{% url 'chat_detail' chat.id %}">
+                <img src="{{ chat.image.url }}" alt="{{ chat.title }}" style="width: 50px; height: 50px;"/>
+                {{ chat.title }}
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Нет доступных чатов.</p>
+{% endif %}
+    {% if user.is_staff %}
+        <a href="{% url 'new_chat' %}">Создать новый чат</a>
+    {% endif %}
+<a href="{% url 'new_chat' %}">Создать новый чат</a>
+{% endblock %}

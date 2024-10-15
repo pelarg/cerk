@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'chats/styles.css' %}">
+    <title>{% block title %}Chat App{% endblock %}</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="gli">
+            <img src="{% static 'chats/gli.png' %}" alt="">>
+        </div>
+        <a href="{% url 'chat_list' %}">Список Чатов</a>
+        <a href="{% url 'profile' %}">Профиль пользователя</a>
+        <!-- Отображать только для админа -->
+        {% if user.is_staff %}
+            <a href="{% url 'admin_panel' %}">Админ панель</a>
+        {% endif %}
+    </div>
+    <div class="main-content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

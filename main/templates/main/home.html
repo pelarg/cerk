@@ -1,10 +1,11 @@
 {% load static %}
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главное приложение</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <style>
         body {
             margin: 0;
@@ -21,6 +22,7 @@
             transition: transform 1s ease;
             border-bottom: 5px solid #5D5D5D;
         }
+
         #button-container {
             position: absolute;
             top: 100%;
@@ -28,33 +30,28 @@
             text-align: center;
             transition: top 1s ease, transform 1s ease;
             transform: translateY(0);
-            transition-delay: 1s;
+            transition-delay: 1.5s;
             background-color: #1D1D1D;
             color: #1D1D1D;
         }
+
         #button-container.show {
-            top: 95%;
-            transform: translateY(-10%);
-        }
-        button {
-            width: 200px;
-            height: 50px;
-            background-color: #5A5A5A;
-            cursor: pointer;
-        }
-        .st {
-            background-color: #1A1A1A;
+            top: 90%;
+            transform: translateY(-25%);
         }
 
-        button:nth-child(2) {
-            background-color: transparent;
-            border: none;
-            color: transparent;
-            cursor: default;
-            width: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
+        button {
+            width: 150px;
+            height: 40px;
+            background-color: #5A5A5A;
+            cursor: pointer;
+            border-radius: 5px; /* Добавлено для округления углов */
+            color: white; /* Цвет текста */
+            font-size: 13px; /* Размер шрифта */
+        }
+
+        .st {
+            background-color: #1A1A1A;
         }
 
         button:nth-child(2) {
@@ -66,12 +63,12 @@
 
         button:nth-child(2):hover {
             background-color: #5A5A5A;
-            color: #1D1D1D;
+            color: white; /* Цвет текста при наведении */
         }
 
         button:nth-child(2):active {
             background-color: #5A5A5A;
-            color: #1D1D1D;
+            color: white; /* Цвет текста при нажатии */
         }
     </style>
 </head>
@@ -79,10 +76,13 @@
     <div id="image-container"></div>
     <div id="button-container">
         <div class="st">
-            <a href="{% url 'page1' %}"><button>Главсайт ЦПЗ</button></a>
+            <a href="{% url 'password_check' %}?next={% url 'page1' %}"><button>Главсайт ЦПЗ</button></a>
+        </div>
+        <div class="st">
+            <a href="{% url 'password_check' %}?next={% url 'chat_list' %}"><button>Ворксайт ЦПЗ</button></a>
         </div>
         <div class="sd">
-            <a href="{% url 'item_listt' %}"><button></button></a>
+            <a href="{% url 'password_check' %}?next={% url 'item_listt' %}"><button>База данных квизов</button></a>
         </div>
     </div>
 
@@ -90,7 +90,7 @@
         window.onload = function() {
             const imageContainer = document.getElementById('image-container');
             const buttonContainer = document.getElementById('button-container');
-            imageContainer.style.transform = 'translateY(-10%)';
+            imageContainer.style.transform = 'translateY(-15%)';
             buttonContainer.classList.add('show');
         }
     </script>

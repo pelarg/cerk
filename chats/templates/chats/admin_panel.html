@@ -1,0 +1,38 @@
+{% extends 'chats/base.html' %}
+
+{% block title %}Админ Панель{% endblock %}
+
+{% block content %}
+<h2>Админ Панель</h2>
+
+<h3>Все пользователи:</h3>
+<div class="popo">
+    <ul>
+        {% for user_profile in user_profiles %}
+            <li>
+                {{ user_profile.nickname }} — {{ user_profile.role }}
+                <a href="{% url 'edit_user' user_profile.id %}">Редактировать роль</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<a href="{% url 'new_chat' %}">Создать новый чат</a>
+{% endblock %}
+
+<div class="pipi">
+    <ul>
+        {% for chat in chats %}
+            <li>
+                {{ chat.title }}
+                <a href="{% url 'edit_chat' chat.id %}">Редактировать чат</a>
+                <form method="POST" action="{% url 'add_user_to_chat' chat.id %}">
+                    {% csrf_token %}
+                    {{ form.user }}
+                    <button type="submit">Добавить пользователя</button>
+                    <a href="{% url 'admin_chat_panel' %}"><button>Редактирование чатов</button></a>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
