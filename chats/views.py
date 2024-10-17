@@ -7,7 +7,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-@login_required
+@login_required(login_url='register2')
 def profile(request):
     user_profile = UserProfile.objects.get(user=request.user)
     return render(request, 'chats/profile.html', {'profile': user_profile})
@@ -38,16 +38,16 @@ def login_user(request):
             return render(request, 'chats/login.html', {'error': 'Неверный логин или пароль'})
     return render(request, 'chats/login.html')
 
-@login_required
+@login_required(login_url='register2')
 def chat_list(request):
     try:
         user_profile = UserProfile.objects.get(user=request.user)
     except UserProfile.DoesNotExist:
         return redirect('register2')
-    chats = Chat.objects.filter(users=request.user)
+    chats = Chat.objects.filter(users=user_profile)
     return render(request, 'chats/chat_list.html', {'chats': chats})
 
-@login_required
+@login_required(login_url='register2')
 def chat_detail(request, chat_id):
     chat = Chat.objects.get(id=chat_id)
     messages = Message.objects.filter(chat=chat)
@@ -73,7 +73,7 @@ def chat_detail(request, chat_id):
 
     return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages})
 
-@login_required
+@login_required(login_url='register2')
 def new_chat(request):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -84,7 +84,7 @@ def new_chat(request):
 
     return render(request, 'chats/new_chat.html')
 
-@login_required
+@login_required(login_url='register2')
 def admin_panel(request):
     if request.user.is_staff:
         user_profiles = UserProfile.objects.all()
@@ -92,7 +92,7 @@ def admin_panel(request):
     else:
         return redirect('chats/chat_list')
 
-@login_required
+@login_required(login_url='register2')
 def admin_chat_panel(request):
     if request.user.is_staff:
         chats = Chat.objects.all()
@@ -100,7 +100,7 @@ def admin_chat_panel(request):
     else:
         return redirect('chats/chat_list')
 
-@login_required
+@login_required(login_url='register2')
 def add_user_to_chat(request, chat_id):
     if request.method == 'POST':
         chat = Chat.objects.get(id=chat_id)
@@ -117,7 +117,7 @@ def add_user_to_chat(request, chat_id):
 from django.shortcuts import get_object_or_404
 
 
-@login_required
+@login_required(login_url='register2')
 def edit_user(request, user_id):
     user_profile = get_object_or_404(UserProfile, id=user_id)
 
