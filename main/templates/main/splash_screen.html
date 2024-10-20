@@ -34,12 +34,12 @@
         if (document.querySelector('video').readyState === 4) {
             setTimeout(function() {
                 window.location.href = '{% url 'home' %}'; // URL вашей целевой страницы
-            }, 5000); // Задержка в 3 секунды
+            }, 4500); // Задержка в 3 секунды
         } else {
             document.querySelector('video').addEventListener('loadeddata', function() {
                 setTimeout(function() {
                     window.location.href='{%  url 'home' %}';
-                }, 5000)
+                }, 4500)
             })
         }
     </script>
