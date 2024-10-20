@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+
+from app2.models import User
 from .models import UserProfile, Chat, Message
 from .forms import UserRegistrationForm, AddUserToChatForm, UserProfileForm
 from django.core.mail import send_mail
@@ -40,22 +42,38 @@ def login_user(request):
 
 @login_required(login_url='register2')
 def chat_list(request):
-    try:
-        user_profile = UserProfile.objects.get(user=request.user)
-    except UserProfile.DoesNotExist:
-        return redirect('register2')
+    user_profile = UserProfile.objects.get(user=request.user)
     chats = Chat.objects.filter(users=user_profile)
     return render(request, 'chats/chat_list.html', {'chats': chats})
+
+@login_required(login_url='register2')
+def add_user_to_chat(request, chat_id):
+    chat = Chat.objects.get(pk=chat_id)
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        try:
+            user = User.objects.get(username=username)
+            try:
+                user_profile = user.userprofile
+            except UserProfile.DoesNotExist:
+                user_profile = UserProfile.objects.create(user=user)
+            chat.users.add(user_profile)
+            messages.success(request, f'Пользователь {username} добавлен в чат.')
+        except User.DoesNotExist:
+            messages.error(request, 'Пользователь с таким именем не найден.')
+        return redirect('chat_detail', chat_id=chat_id)
+    return render(request, 'chats/add_user_to_chat.html', {'chat': chat})
 
 @login_required(login_url='register2')
 def chat_detail(request, chat_id):
     chat = Chat.objects.get(id=chat_id)
     messages = Message.objects.filter(chat=chat)
+    users_in_chat=chat.users.all()
 
     if request.method == 'POST':
         if request.user.userprofile.role == 1 and chat.title != 'Чат с админом':
             # Пользователь не может писать в этом чате
-            return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages, 'error': 'У вас нет прав для написания в этом чате'})
+            return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages, 'error': 'У вас нет прав для написания в этом чате', 'users_in_chat': users_in_chat})
 
         content = request.POST.get('content')
         message = Message.objects.create(chat=chat, user=request.user, content=content)
@@ -75,14 +93,22 @@ def chat_detail(request, chat_id):
 
 @login_required(login_url='register2')
 def new_chat(request):
-    if request.method == 'POST':
-        title = request.POST.get('title')
-        image = request.FILES.get('image')
-        chat = Chat.objects.create(title=title, image=image)
-        chat.users.add(request.user)
-        return redirect('chat_list')
+       if request.method == 'POST':
+           title = request.POST.get('title')
+           image = request.FILES.get('image')
+           chat = Chat.objects.create(title=title, image=image)
 
-    return render(request, 'chats/new_chat.html')
+           # Получаем UserProfile пользователя
+           try:
+               user_profile = UserProfile.objects.get(user=request.user)
+           except UserProfile.DoesNotExist:
+               # Создаем UserProfile, если он отсутствует
+               user_profile = UserProfile.objects.create(user=request.user)
+
+           chat.users.add(user_profile) # Добавляем UserProfile в чат
+           return redirect('chat_list')
+
+       return render(request, 'chats/new_chat.html')
 
 @login_required(login_url='register2')
 def admin_panel(request):
@@ -130,3 +156,17 @@ def edit_user(request, user_id):
         form = UserProfileForm(instance=user_profile)
 
     return render(request, 'chats/edit_user.html', {'form': form, 'user_profile': user_profile})
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from .models import UserProfile
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.userprofile.save()

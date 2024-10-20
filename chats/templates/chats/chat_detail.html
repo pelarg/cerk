@@ -20,6 +20,15 @@
     <textarea name="content" rows="3" placeholder="Введите ваше сообщение..."></textarea>
     <button type="submit">Отправить</button>
 </form>
-
-<a href="{% url 'chat_list' %}">Вернуться к списку чатов</a>
+<h2>Пользователи в чате</h2>
+<ul>
+    {% for user in users_in_chat %}
+        <li>{{ user.user.username }}</li>
+    {% endfor %}
+</ul>
+<form method="POST" action="{% url 'add_user_to_chat' chat.id %}">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Имя пользователя">
+    <button type="submit">Добавить</button>
+</form>
 {% endblock %}

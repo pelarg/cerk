@@ -87,6 +87,14 @@ a {
 
 /* Эффект мигающего курсора */
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #0f0 }
+    from, to {
+        border-color: transparent
+    }
+    50% {
+        border-color: #0f0
+    }
+}
+
+.main-content {
+    right: 15px;
 }

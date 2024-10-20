@@ -10,6 +10,7 @@ urlpatterns = [
     path('app1/', include('app1.urls')),
     path('chats/', include('chats.urls')),
     path('password-check/', password_check_view, name='password_check'),
+    path('splash', views.splash_view, name='splash'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

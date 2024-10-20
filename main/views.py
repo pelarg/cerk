@@ -12,7 +12,7 @@ def mobile_version(request):
 
     if not user_agent_string:
         # Обработка случая, если User-Agent не найден
-        return render(request, 'main/home.html')
+        return render(request, 'main/splash_screen.html')
 
     user_agent = parse(user_agent_string)
     is_mobile = user_agent.is_mobile
@@ -20,7 +20,7 @@ def mobile_version(request):
     if is_mobile:
         return render(request, 'main/mobile_version.html')
     else:
-        return render(request, 'main/home.html')
+        return render(request, 'main/splash_screen.html')
 
 def password_check_view(request):
     next_url = request.GET.get('next')
@@ -61,3 +61,6 @@ def password_check_view(request):
         form = PasswordForm()
 
     return render(request, 'main/password_check.html', {'form': form, 'attempts_left': attempts_left, 'next_url': next_url})
+
+def splash_view(request):
+    return render(request, 'main/splash_screen.html')
