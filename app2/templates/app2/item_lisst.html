@@ -24,6 +24,55 @@
                 overflow: hidden;
             }
         }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .circle {
+            width: 400px;
+            height: 400px;
+            margin: 15px;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 5px solid #2b2b71;
+            position: relative; /* Добавлена обводка */
+        }
+        .circle .name { /* Стиль для надписи */
+            position: absolute; /* Позиционируем надпись */
+            bottom: 10px; /* Отступ от нижнего края */
+            left: 50%; /* Центрируем по горизонтали */
+            transform: translateX(-50%); /* Дополнительное центрирование */
+            background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+            color: white;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .circle img {
+            width: 100%;
+            height: auto;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        .containerr h1 { /* Блок для "Наши лучшие сотрудники!" */
+            background: linear-gradient(180deg, #2b2b71, #5b3e78); /* Сине-голубой цвет */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        .containerr h3 { /* Блок для "Если хотите стать одним из них..." */
+            background: linear-gradient(180deg, #5b3e78, #2b2b71); /* Голубо-синий цвет */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -39,11 +88,42 @@
         </aside>
         <div class="containerr">
             <h1>Наши лучшие сотрудники!</h1>
-            <div class="hh">
-
+            <div class="row">
+                <div class="circle">
+                    <img src="{% static 'app2/1.jpg' %}" alt="Фото 2">
+                    <div class="name">Глеб Немеров</div>
+                </div>
+                <div class="circle">
+                    <img src="{% static 'app2/1.jpg' %}" alt="Фото 2">
+                    <div class="name">Никита Сидоренко</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="circle">
+                    <img src="{% static 'app2/2.jpg' %}" alt="Фото 3">
+                    <div class="name">Александр Мылко</div>
+                </div>
+                <div class="circle">
+                    <img src="{% static 'app2/3.jpg' %}" alt="Фото 4">
+                    <div class="name">Виктория Щепачёва</div>
+                </div>
+                <div class="circle">
+                    <img src="{% static 'app2/4.jpg' %}" alt="Фото 5">
+                    <div class="name">Виктория Волегжанина</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="circle">
+                    <img src="{% static 'app2/5.jpg' %}" alt="Фото 6">
+                    <div class="name">Виктория Полежаева</div>
+                </div>
+                <div class="circle">
+                    <img src="{% static 'app2/6.jpeg' %}" alt="Фото 7">
+                    <div class="name">Андрей Шестаков</div>
+                </div>
             </div>
             <h3>Если хотите стать одним из них, то пишите главному инспектору!</h3>
-        <div>
+        </div>
     </div>
 </body>
 </html>
