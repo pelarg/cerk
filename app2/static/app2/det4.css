@@ -4,6 +4,38 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+@media only screen and (max-width: 480px) {
+    .container {
+        flex-direction: column; /* Изменяем направление на колонку */
+    }
+
+    aside {
+        order: 2; /* Теперь боковая панель отображается после контента */
+        width: 100%; /* Занимает всю ширину экрана */
+        margin-top: 20px; /* Добавляем отступ сверху */
+    }
+
+    .containerr {
+        width: 100%; /* Занимает всю ширину экрана */
+        margin-bottom: 20px; /* Добавляем отступ снизу */
+    }
+
+    .row {
+        flex-direction: column; /* Изменяем направление на колонку */
+        align-items: center; /* Выравниваем по центру */
+    }
+
+    .circle {
+        width: 90%; /* Занимает 90% ширины экрана */
+        height: auto; /* Высота подстраивается автоматически */
+        margin: 10px 0; /* Отступы сверху и снизу */
+    }
+
+    .circle .name {
+        font-size: 14px; /* Уменьшаем размер шрифта */
+    }
+}
+
 .container {
     display: flex;
     justify-content: flex-start;
@@ -11,7 +43,7 @@ body {
 }
 
 aside {
-    width: 250px;
+    width: 5%;
     background: linear-gradient(180deg, #2b2b71, #5b3e78);
     border-radius: 10px;
     padding: 20px;
@@ -51,6 +83,7 @@ aside h1 {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 95%;
 }
 
 h1, p {
