@@ -11,13 +11,14 @@ body {
 
     aside {
         order: 1; /* Теперь боковая панель отображается перед контентом */
-        width: 10%;
+        width: 100%;
         margin-top: 20px; /* Добавляем отступ сверху */
     }
 
     .containerr {
         width: 90%; /* Занимает всю ширину экрана */
         margin-bottom: 20px; /* Добавляем отступ снизу */
+        flex-direction: column;
     }
 
     .staff-member {
