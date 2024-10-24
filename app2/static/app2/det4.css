@@ -18,11 +18,11 @@ body {
     .containerr {
         width: 90%; /* Занимает всю ширину экрана */
         margin-bottom: 20px; /* Добавляем отступ снизу */
-        flex-direction: column;
     }
 
     .staff-member {
         text-align: center;
+        wibth: 100%;
     }
 
     .circle {
