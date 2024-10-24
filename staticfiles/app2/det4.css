@@ -43,7 +43,7 @@ body {
 }
 
 aside {
-    width: 10%;
+    width: 100%;
     background: linear-gradient(180deg, #2b2b71, #5b3e78);
     border-radius: 10px;
     padding: 20px;
