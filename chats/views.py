@@ -22,6 +22,8 @@ def register(request):
             nickname = request.POST.get('nickname')
             phone = request.POST.get('phone')
             messages.success(request, "Регистрация прошла нормально!")
+
+            # Проверка, существует ли уже профиль, и создание нового профиля
             UserProfile.objects.create(user=user, nickname=nickname, phone=phone)
             return redirect('login')
     else:
