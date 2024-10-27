@@ -23,6 +23,36 @@ class UserRegistrationForm(UserCreationForm):
         label=_("Класс"),
         widget=forms.TextInput(attrs={'placeholder': _('Введите класс')})
     )
+    email = forms.EmailField(  # Добавим поле для электронной почты
+        required=True,
+        label=_("Электронная почта"),
+        widget=forms.EmailInput(attrs={'placeholder': _('Введите вашу электронную почту')})
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2', 'nickname', 'phone', 'grade', 'email']  # добавили email
+        labels = {
+            'username': _("Имя пользователя"),
+            'password1': _("Пароль"),
+            'password2': _("Подтверждение пароля"),
+        }
+        help_texts = {
+            'username': _("Не более 150 символов. Используйте только буквы, цифры и @/./+/-/_."),
+            'password1': _(
+                "Ваш пароль не должен быть слишком похож на вашу другую личную информацию. Пароль должен содержать минимум 8 символов. Пароль не должен быть слишком распространенным. Пароль не может состоять только из цифр."),
+            'password2': _("Введите тот же пароль для подтверждения."),
+        }
+        error_messages = {
+            'password1': {
+                'too_common': _("Ваш пароль не должен быть слишком распространенным."),
+                'too_similar': _("Ваш пароль не должен быть слишком похож на вашу другую личную информацию."),
+                'numeric': _("Пароль не может состоять только из цифр."),
+            },
+            'password2': {
+                'password_mismatch': _("Пароли не совпадают. Пожалуйста, введите тот же пароль."),
+            },
+        }
 
     class Meta:
         model = User
@@ -52,6 +82,7 @@ class UserRegistrationForm(UserCreationForm):
                 'password_mismatch': _("Пароли не совпадают. Пожалуйста, введите тот же пароль."),
             },
         }
+
 
     def clean_phone(self):
         phone = self.cleaned_data.get('phone')

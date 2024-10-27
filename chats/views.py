@@ -21,10 +21,11 @@ def register(request):
             user = form.save()
             nickname = request.POST.get('nickname')
             phone = request.POST.get('phone')
+            email = request.POST.get('email')
             messages.success(request, "Регистрация прошла нормально!")
 
             # Проверка, существует ли уже профиль, и создание нового профиля
-            UserProfile.objects.create(user=user, nickname=nickname, phone=phone)
+            UserProfile.objects.create(user=user, nickname=nickname, phone=phone, email=email)
             return redirect('login')
     else:
         form = UserRegistrationForm()
@@ -66,32 +67,41 @@ def add_user_to_chat(request, chat_id):
         return redirect('chat_detail', chat_id=chat_id)
     return render(request, 'chats/add_user_to_chat.html', {'chat': chat})
 
+
 @login_required(login_url='register2')
 def chat_detail(request, chat_id):
     chat = Chat.objects.get(id=chat_id)
     messages = Message.objects.filter(chat=chat)
-    users_in_chat=chat.users.all()
+    users_in_chat = chat.users.all()
 
     if request.method == 'POST':
-        if request.user.userprofile.role == 1 and chat.title != 'Чат с админом':
+        # Изменено на использование правильного имени related_name
+        if request.user.user_profiles.role == 1 and chat.title != 'Чат с админом':
             # Пользователь не может писать в этом чате
-            return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages, 'error': 'У вас нет прав для написания в этом чате', 'users_in_chat': users_in_chat})
+            return render(request, 'chats/chat_detail.html', {
+                'chat': chat,
+                'messages': messages,
+                'error': 'У вас нет прав для написания в этом чате',
+                'users_in_chat': users_in_chat
+            })
 
         content = request.POST.get('content')
         message = Message.objects.create(chat=chat, user=request.user, content=content)
 
         for user in chat.users.all():
             if user != request.user:
+                profile = user.user_profiles  # Получаем профиль пользователя
                 send_mail(
                     f'Новое сообщение в чате {chat.title}',
                     f'В чате {chat.title} появилось новое сообщение: {message.content}',
                     'from@example.com',
-                    [user.email],
+                    [profile.email],
                 )
 
         return redirect('chats/chat_detail', chat_id=chat.id)
 
     return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages})
+
 
 @login_required(login_url='register2')
 def new_chat(request):
