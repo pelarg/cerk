@@ -22,7 +22,7 @@ a {
 }
 
 .sidebar {
-    width: 15%;
+    width: 10%;
     height: 100vh;
     background: black;
     color: #0f0;
@@ -30,20 +30,20 @@ a {
 }
 
 .main-content {
-    width: 85%;
+    width: 90%;
     height: 100vh;
     background: black;
     color: #0f0;
 }
 
 .gli img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    height: 100%;
     margin: 20px;
     &::before,
     &::after {
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        height: 100%;
     }
 }
 @keyframes glitch-effect {
