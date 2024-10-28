@@ -122,13 +122,13 @@ USE_I18N = True
 USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'  # или используйте ваш SMTP-сервер
-EMAIL_HOST_USER = 'your-email@example.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_HOST = 'smtp.gmail.com'  # или используйте ваш SMTP-сервер
+EMAIL_HOST_USER = 'pelargonia52022@gmail.com'
+EMAIL_HOST_PASSWORD = 'kanadej1248163264'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images)df
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = "/static/"

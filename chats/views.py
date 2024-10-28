@@ -76,7 +76,7 @@ def chat_detail(request, chat_id):
 
     if request.method == 'POST':
         # Изменено на использование правильного имени related_name
-        if request.user.user_profiles.role == 1 and chat.title != 'Чат с админом':
+        if chat.title != 'Чат с админом' and request.user.user_profiles.role == 1:
             # Пользователь не может писать в этом чате
             return render(request, 'chats/chat_detail.html', {
                 'chat': chat,
@@ -90,7 +90,7 @@ def chat_detail(request, chat_id):
 
         for user in chat.users.all():
             if user != request.user:
-                profile = user.user_profiles  # Получаем профиль пользователя
+                profile = request.user.user_profiles  # Получаем профиль пользователя
                 send_mail(
                     f'Новое сообщение в чате {chat.title}',
                     f'В чате {chat.title} появилось новое сообщение: {message.content}',
@@ -181,4 +181,4 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.userprofile.save()
+    instance.user_profiles.save()
