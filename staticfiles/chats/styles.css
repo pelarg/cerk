@@ -98,3 +98,25 @@ a {
 .main-content {
     right: 15px;
 }
+
+.message {
+    margin-bottom: 15px; /* Отступ между сообщениями */
+    padding: 10px;
+    border-radius: 8px;
+    /* ... */
+}
+
+.user-message {
+    text-align: right; /* Сообщения пользователя справа */
+    background-color: #e0f2f7; /* Цвет фона сообщений пользователя */
+}
+
+.other-message {
+    text-align: left; /* Сообщения других пользователей слева */
+    background-color: #f2f2f2; /* Цвет фона сообщений других пользователей */
+}
+
+.username {
+    font-weight: bold;
+    margin-bottom: 5px; /* Отступ между именем и текстом */
+}

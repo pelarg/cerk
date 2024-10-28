@@ -4,17 +4,17 @@
 
 {% block content %}
 <h2>Чат: {{ chat.title }}</h2>
-
 <div class="messages">
     {% for message in messages %}
-        <p><strong>{{ message.user.username }}:</strong> {{ message.content }} <em>{{ message.timestamp }}</em></p>
+        <div class="message {% if message.user == request.user %}user-message{% else %}other-message{% endif %}">
+            <p class="username">{{ message.user.username }}</p>
+            <p class="content">{{ message.content }}</p>
+        </div>
     {% endfor %}
 </div>
-
 {% if error %}
     <p style="color: red;">{{ error }}</p>
 {% endif %}
-
 <form method="POST" novalidate>
     {% csrf_token %}
     <textarea name="content" rows="3" placeholder="Введите ваше сообщение..."></textarea>
