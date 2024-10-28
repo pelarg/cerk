@@ -12,7 +12,35 @@
     <style>
         #chart {
             wibth: 100%;
-            height: 80%;
+            height: 100%;
+        }
+        .bot-block {
+            background-color: #f2f2f2;
+            width: 10%;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bot-block h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .bot-block a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff; /* Цвет Telegram */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .bot-block a:hover {
+              background-color: #0056b3; /* Более темный цвет при наведении */
         }
     </style>
 </head>
@@ -36,6 +64,11 @@
                 <p>Чё-то сломалося или же вы не зарегистрировались. Передайте об этом главном инспектору, пжлс.</p>
             {% endif %}
         </div>
+        <div class="bot-block">
+            <h2>Бот для заказов</h2>
+            <a href="https://t.me/crk2bot" target="_blank">Открыть бота в Telegram</a>
+            <h2>(Другие боты появятся позже)</h2>
+         </div>
     </div>
 </body>
 </html>

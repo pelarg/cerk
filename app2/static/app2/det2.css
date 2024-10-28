@@ -34,7 +34,7 @@ h2, p {
 }
 
 aside {
-    width: 250px; /* Ширина сайдбара */
+    width: 15%; /* Ширина сайдбара */
     background: linear-gradient(180deg, #2b2b71, #5b3e78); /* Космический градиент */
     border-radius: 10px;
     padding: 20px;
