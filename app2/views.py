@@ -2,7 +2,6 @@ import os
 
 import matplotlib
 from django.shortcuts import render, redirect
-from django.test.testcases.SimpleTestCase import settings
 
 from .models import Element, CustomUser, User
 from .forms import RegistrationForm

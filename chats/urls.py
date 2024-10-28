@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import register, profile, chat_list, chat_detail, new_chat, admin_panel, edit_user, add_user_to_chat, \
-    download_file
+from .views import register, profile, chat_list, chat_detail, new_chat, admin_panel, edit_user, add_user_to_chat
 from .logio import CustomLoginView
 from django.contrib.auth.views import LoginView
 from .views import admin_chat_panel
