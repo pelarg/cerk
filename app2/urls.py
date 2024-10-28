@@ -1,4 +1,6 @@
 from django.urls import path
+
+from chats.views import download_file
 from . import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
@@ -9,5 +11,6 @@ urlpatterns = [
     path('item_lisst/', views.item_lisst, name='item_lisst'),
     path('register/', views.register, name='register'),
     path('anketa/', views.anketa, name='anketa'),
+    path('download/', download_file, name='download_file'),
 ]
 urlpatterns += staticfiles_urlpatterns()

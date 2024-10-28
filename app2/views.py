@@ -1,5 +1,9 @@
+import os
+
 import matplotlib
 from django.shortcuts import render, redirect
+from django.test.testcases.SimpleTestCase import settings
+
 from .models import Element, CustomUser, User
 from .forms import RegistrationForm
 from django.shortcuts import render
@@ -115,3 +119,19 @@ def anketa(request):
     else:
         form = AnkForm()
     return render(request, 'app2/anketa.html', {'form': form})
+
+import os
+from django.shortcuts import render, HttpResponse
+from django.http import FileResponse
+from django.conf import settings
+
+def download_file(request):
+    file_path = os.path.join(settings.STATIC_ROOT, 'app2', '00', '00.docx')
+
+    if not os.path.exists(file_path):
+        return HttpResponse("Файл не найден", status=404)
+
+    response = FileResponse(open(file_path, 'rb'))
+    response['Content-Type'] = 'application/pdf'
+    response['Content-Disposition'] = 'attachment; filename="your_file.pdf"'
+    return response
