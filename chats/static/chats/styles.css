@@ -110,12 +110,12 @@ a {
 
 .user-message {
     text-align: right; /* Сообщения пользователя справа */
-    background-color: #e0f2f7; /* Цвет фона сообщений пользователя */
+    background-color: gray; /* Цвет фона сообщений пользователя */
 }
 
 .other-message {
     text-align: left; /* Сообщения других пользователей слева */
-    background-color: #f2f2f2; /* Цвет фона сообщений других пользователей */
+    background-color: dimgray; /* Цвет фона сообщений других пользователей */
 }
 
 .username {

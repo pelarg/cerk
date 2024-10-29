@@ -90,6 +90,7 @@ def chat_detail(request, chat_id):
         content = request.POST.get('content')
         message = Message.objects.create(chat=chat, user=request.user, content=content)
 
+        """
         for user in chat.users.all():
             if user != request.user:
                 profile = request.user.user_profiles  # Получаем профиль пользователя
@@ -101,7 +102,7 @@ def chat_detail(request, chat_id):
                 )
 
         return redirect('chats/chat_detail', chat_id=chat.id)
-
+        """
     return render(request, 'chats/chat_detail.html', {'chat': chat, 'messages': messages})
 
 

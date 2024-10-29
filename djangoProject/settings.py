@@ -123,7 +123,7 @@ USE_TZ = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # или используйте ваш SMTP-сервер
-EMAIL_HOST_USER = 'pelargonia52022@gmail.com'
+EMAIL_HOST_USER = 'pelargonia52022'
 EMAIL_HOST_PASSWORD = 'kanadej1248163264'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -134,10 +134,12 @@ EMAIL_USE_TLS = True
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'media')
 ]
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / 'static',
+    BASE_DIR / 'media'
 ]
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -145,7 +147,8 @@ if not DEBUG:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 """AUTH_USER_MODEL = 'app2.user'"""
 
 PORT=8000
