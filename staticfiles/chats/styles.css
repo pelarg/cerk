@@ -110,7 +110,7 @@ a {
 
 .user-message {
     text-align: right; /* Сообщения пользователя справа */
-    background-color: gray; /* Цвет фона сообщений пользователя */
+    background-color: white; /* Цвет фона сообщений пользователя */
 }
 
 .other-message {
