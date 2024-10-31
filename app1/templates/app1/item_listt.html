@@ -8,6 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>База данных вопросов</title>
     <link rel="stylesheet" href="{% static 'css/iiem_list.css' %}">
+    <style>
+        .used-circle {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .used-circle.red {
+            background-color: red;
+        }
+
+        .used-circle.green {
+            background-color: green;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -20,9 +37,14 @@
         <ul>
             {% for item in items %}
             <li class="item-container">
-                <div class="item-title">{{  item.title }}</div>
+                {% if item.is_used %}
+                    <span class="used-circle green"></span>
+                {% else %}
+                    <span class="used-circle red"></span>
+                {% endif %}
+                <div class="item-title">{{ item.title }}</div>
                 <div class="item-text">{{ item.text }}</div>
-            </li>    
+            </li>
             {% endfor %}
         </ul>
     </div>
@@ -36,6 +58,6 @@
         </form>
     </div>
 </div>
-<a href="{%  url 'item_detail' %}" class="item-detail-link">Что это?</a>
+<div class="bottom-link"><a href="{% url 'item_detail' %}" class="item-detail-link">Что это?</a></div>
 </body>
 </html>
