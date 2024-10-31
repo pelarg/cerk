@@ -10,7 +10,7 @@
         {% for chat in chats %}
             <li>
                 <a href="{% url 'chat_detail' chat.id %}">
-                    <img src="{{ chat.image.url }}" alt="{{ chat.title }}" style="width: 50px; height: 50px;"/>
+                    <img src="{{ chat.image_url }}" alt="{{ chat.title }}">
                 </a>
             </li>
         {% endfor %}

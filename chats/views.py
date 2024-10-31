@@ -49,6 +49,10 @@ def login_user(request):
 def chat_list(request):
     user_profile = UserProfile.objects.get(user=request.user)
     chats = Chat.objects.filter(users=user_profile)
+    # Получаем URL для изображений чатов
+    for chat in chats:
+        print(chat.image.url) # Вывод URL изображения в консоль
+        chat.image_url = chat.image.url # Добавляем атрибут image_url
     return render(request, 'chats/chat_list.html', {'chats': chats})
 
 @login_required(login_url='register2')
