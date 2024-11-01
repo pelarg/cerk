@@ -12,8 +12,9 @@ def item_listt(request):
         if title and text:
             Item.objects.create(title=title, text=text)
             return redirect('item_listt')
+
     search_query = request.GET.get('search', '')
-    items=Item.objects.filter(title__icontains=search_query)
+    items = Item.objects.filter(title__icontains=search_query)
 
     return render(request, 'app1/item_listt.html', {'items': items, 'search_query': search_query})
 

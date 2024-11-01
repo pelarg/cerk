@@ -2,6 +2,8 @@ body {
     background: linear-gradient(135deg, #dd5e89, #7431c1, #3a1c71);
     font-family: Arial, sans-serif;
     color: white;
+    padding: 40px;
+    height: 100vh;
 }
 
 .container {
@@ -13,6 +15,7 @@ body {
 .left-block {
     width: 50%;
     padding: 20px;
+    margin-bottom: 40px;
 }
 
 h1 {
@@ -96,4 +99,10 @@ button:hover {
     .right-block {
         width: 100%; /* Занимаем 100% ширины для мобильных */
     }
+}
+
+.bottom-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }

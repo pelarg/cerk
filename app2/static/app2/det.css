@@ -18,28 +18,34 @@ body {
 }
 
 aside {
-    width: 15%;
+    width: 100%; /* Занимает всю ширину экрана */
     background: linear-gradient(180deg, #2b2b71, #5b3e78);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     position: fixed;
-    top: 0;
+    top: 0; /* Расположение сверху */
     left: 0;
-    height: 100vh;
+    height: auto; /* Автоматическая высота, чтобы занимать только необходимое пространство */
 }
 
 aside h1 {
     font-size: 24px;
+    text-align: center; /* Выравнивание заголовка по центру */
 }
 
 .links {
     list-style-type: none;
     padding: 0;
+    display: flex; /* Кнопки в один ряд */
+    justify-content: center; /* Выравнивание кнопок по центру */
+    gap: 10px; /* Промежуток между кнопками */
+    flex: 1 1 auto; /* Позволяет кнопкам расти и 
 }
 
 .links li {
-    margin: 15px 0;
+    /* Убираем отступы для кнопок */
+    margin: 0;
 }
 
 .links a {
@@ -47,6 +53,10 @@ aside h1 {
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s;
+    padding: 10px 20px; /* Добавьте отступы для кнопок */
+    border-radius: 5px; /* Закругленные углы для кнопок */
+    background-color: #3b3b89; /* Цвет фона кнопок */
+    border: 1px solid #5b3e78; /* Граница для кнопок */
 }
 
 .links a:hover {
@@ -55,7 +65,7 @@ aside h1 {
 
 .containerr {
     flex-grow: 1;
-    margin-left: 280px;
+    margin-top: 100px; /* Добавьте отступ сверху, чтобы не перекрывать `aside` */
     background: linear-gradient(180deg, #1a1a4b, #3b3b89);
     border-radius: 10px;
     padding: 20px;
@@ -64,8 +74,9 @@ aside h1 {
 }
 
 p {
-    text-align: center;
+    text-align: center; /* Выравнивание текста по центру */
 }
+
 
 button {
     display: block;
@@ -112,11 +123,13 @@ button:hover {
     padding: 20px;
     z-index: 1;
 }
+
 .container {
     position: relative;
     text-align: center;
     color: white;
 }
+
 .background-image {
     position: absolute;
     top: 0;
@@ -129,6 +142,7 @@ button:hover {
     object-fit: cover;
     background-size: contain;
 }
+
 #popup {
     display: none;
     position: absolute;
@@ -140,6 +154,7 @@ button:hover {
     border: 5px solid #5b3e78;
     border-radius: 10px;
 }
+
 #more-button {
     background-color: blue;
     color: white;

@@ -45,15 +45,25 @@ def login_user(request):
             return render(request, 'chats/login.html', {'error': 'Неверный логин или пароль'})
     return render(request, 'chats/login.html')
 
+from django.conf import settings
+
 @login_required(login_url='register2')
 def chat_list(request):
     user_profile = UserProfile.objects.get(user=request.user)
     chats = Chat.objects.filter(users=user_profile)
+
     # Получаем URL для изображений чатов
     for chat in chats:
-        print(chat.image.url) # Вывод URL изображения в консоль
-        chat.image_url = chat.image.url # Добавляем атрибут image_url
-    return render(request, 'chats/chat_list.html', {'chats': chats})
+        # Создайте путь к изображению с помощью os.path.join
+        image_path = os.path.join(settings.MEDIA_ROOT, 'chat_images', chat.image.name) 
+
+        # Добавьте атрибут image_url 
+        chat.image_url = image_path # Используйте image_path в качестве URL
+
+        # Вывод URL изображения в консоль (для отладки)
+        print(f"chat.image_url: {chat.image_url}") 
+
+    return render(request, 'chats/chat_list.html', {'chats': chats}) 
 
 @login_required(login_url='register2')
 def add_user_to_chat(request, chat_id):
