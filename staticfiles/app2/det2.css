@@ -7,39 +7,67 @@ body {
 
 .container {
     display: flex;
-    height: 100vh; /* Высота страницы */
-}
-
-.containerr {
-    background: linear-gradient(180deg, #1a1a4b, #3b3b89); /* Космический фон */
-    border-radius: 10px;
+    justify-content: flex-start;
     padding: 20px;
-    margin-left: 20px;
-    flex-grow: 1; /* Занимает оставшееся пространство */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-.all {
-    width: 20%;
-    margin: 20px auto; /* Центрируем элемент */
-    text-align: center;
-    background: radial-gradient(orangered, darkorange);
-    border: 5px inset chocolate;
-    border-radius: 10px; /* Округление углов блока */
-    padding: 20px; /* Добавляем отступ внутри блока */
-}
-
-h2, p {
-    color: #ffffff; /* Цвет текста заголовков и параграфов */
+    height: 100vh;
 }
 
 aside {
-    width: 15%; /* Ширина сайдбара */
-    background: linear-gradient(180deg, #2b2b71, #5b3e78); /* Космический градиент */
+    width: 100%; /* Занимает всю ширину экрана */
+    background: linear-gradient(180deg, #2b2b71, #5b3e78);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0; /* Расположение сверху */
+    left: 0;
+    z-index: 500;
+    height: auto; /* Автоматическая высота, чтобы занимать только необходимое пространство */
+    justify-content: space-around; /* Выравнивание */
+}
 
+aside h1 {
+    font-size: 24px;
+    text-align: center; /* Выравнивание заголовка по центру */
+}
+
+.links {
+    list-style-type: none;
+    padding: 0;
+    display: flex; /* Кнопки в один ряд */
+    justify-content: center; /* Выравнивание кнопок по центру */
+    gap: 10px; /* Промежуток между кнопками */
+    flex: 1 1 auto; /* Позволяет кнопкам расти и 
+}
+
+.links li {
+    /* Убираем отступы для кнопок */
+    margin: 0;
+}
+
+.links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+    padding: 10px 20px; /* Добавьте отступы для кнопок */
+    border-radius: 5px; /* Закругленные углы для кнопок */
+    background-color: #3b3b89; /* Цвет фона кнопок */
+    border: 1px solid #5b3e78; /* Граница для кнопок */
+}
+
+.links a:hover {
+    color: #ff69b4;
+}
+
+.containerr {
+    flex-grow: 1;
+    margin-top: 100px; /* Добавьте отступ сверху, чтобы не перекрывать `aside` */
+    background: linear-gradient(180deg, #1a1a4b, #3b3b89);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
 }
 
 a {
