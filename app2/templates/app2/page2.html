@@ -22,12 +22,14 @@
             </div>
         </aside>
         <div class="containerr">
-            {% for el in elem %}
-                <div class="all">
-                    <h2>{{ el.name }}</h2>
-                    <p>{{ el.title }}</p>
-                </div>
-            {% endfor %}
+            <div class="row">
+                {% for el in elem %}
+                    <div class="all">
+                        <h2>{{ el.name }}</h2>
+                        <p>{{ el.title }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         <div>
     </div>
 </body>

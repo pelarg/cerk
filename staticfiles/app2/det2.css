@@ -1,8 +1,13 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a1a4b, #2388d6); /* Космический градиент */
+    background: linear-gradient(135deg, #1a1a4b, #2388d6);
     color: #ffffff;
-    margin: 0; /* Убираем отступы */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
@@ -10,6 +15,31 @@ body {
     justify-content: flex-start;
     padding: 20px;
     height: 100vh;
+}
+
+.containerr {
+    width: 100%;
+    flex-grow: 1;
+    margin-top: 100px; /* Добавьте отступ сверху, чтобы не перекрывать `aside` */
+    background: linear-gradient(180deg, #1a1a4b, #3b3b89);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.all {
+    width: 80%;
+    margin: 20px 0; /* Центрируем элемент */
+    text-align: center;
+    background: radial-gradient(orangered, darkorange);
+    border: 5px inset chocolate;
+    border-radius: 10px; /* Округление углов блока */
+    padding: 20px; /* Добавляем отступ внутри блока */
+}
+
+h2, p {
+    color: #ffffff; /* Цвет текста заголовков и параграфов */
 }
 
 aside {
@@ -59,36 +89,14 @@ aside h1 {
 .links a:hover {
     color: #ff69b4;
 }
-
-.containerr {
-    flex-grow: 1;
-    margin-top: 100px; /* Добавьте отступ сверху, чтобы не перекрывать `aside` */
-    background: linear-gradient(180deg, #1a1a4b, #3b3b89);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-a {
-    text-decoration: none;
-    color: #ffffff; /* Цвет ссылок */
-    transition: color 0.3s;
-}
-
-a:hover {
-    color: #ff69b4; /* Цвет при наведении на ссылку */
-}
-
-.links {
-    list-style-type: none; /* Убираем маркеры */
-    padding: 0; /* Убираем отступы у списка */
-}
-
-li {
-    margin-bottom: 1rem; /* Отступ между элементами списка */
-}
 .d {
     width: 0;
     height: 0;
+}
+
+.row {
+    display: flex; 
+    flex-wrap: wrap; /* Позволяет элементам переходить на следующую строку */
+    justify-content: space-between; /* Разделяет элементы */
+    width: 100%;
 }
