@@ -17,26 +17,28 @@ body {
     height: 100vh;
 }
 
-.containerr {
-    width: 100%;
-    flex-grow: 1;
-    margin-top: 100px; /* Добавьте отступ сверху, чтобы не перекрывать `aside` */
-    background: linear-gradient(180deg, #1a1a4b, #3b3b89);
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    position: relative;
+.containerr { 
+    width: 100%; 
+    flex-grow: 1; 
+    margin-top: 100px; 
+    background: linear-gradient(180deg, #1a1a4b, #3b3b89); 
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    position: relative; 
 }
 
-.all {
-    width: 80%;
-    margin: 20px 0; /* Центрируем элемент */
-    text-align: center;
-    background: radial-gradient(orangered, darkorange);
-    border: 5px inset chocolate;
-    border-radius: 10px; /* Округление углов блока */
-    padding: 20px; /* Добавляем отступ внутри блока */
+
+.all { 
+    width: 100%; /* Замените 80% на 100% для полной ширины */
+    margin: 20px 0; /* Оставьте отступы сверху и снизу для spacing */
+    text-align: center; 
+    background: radial-gradient(orangered, darkorange); 
+    border: 5px inset chocolate; 
+    border-radius: 10px; /* Округление углов блока */ 
+    padding: 20px; /* Добавляем отступ внутри блока */ 
 }
+
 
 h2, p {
     color: #ffffff; /* Цвет текста заголовков и параграфов */
